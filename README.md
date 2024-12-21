@@ -1,4 +1,4 @@
-#**Calendar Generator Program**
+**Calendar Generator Program**
 
 **Overview**
 
