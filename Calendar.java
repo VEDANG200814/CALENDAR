@@ -29,25 +29,46 @@ public class Calendar {
         System.out.println("Enter year");
         int y=sc.nextInt(),i,j,k,l,b=0;
         l=ob.start(y);
-        System.out.println("Enter the month number");
+        System.out.println("Enter the month number\nEnter \'13\' to print entire year");
         int month=sc.nextInt();
         String m[]={"JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"};
-        System.out.println(m[month-1]);
-        System.out.println("S\tM\tT\tW\tT\tF\tS");
-        for(i=1;i<month;i++){
-            b=ob.leap(y,i);
-            l+=b;
-        }
-        b=ob.leap(y, i);
-        l=l%7+1;
-        for(j=1;j<l;j++)
-        System.out.print(" \t");
-        for(k=1;k<=b;k++,j++){
-            System.out.print(k+"\t");
-            l++;
-            if(l==8||j%7==0){
+        if(month==13){
+            l=l%7+1;
+            for(i=1;i<=12;i++){
+                b=ob.leap(y, i);                
+                System.out.println(m[i-1]+": ");
+                System.out.println("S\tM\tT\tW\tT\tF\tS");
+                for(k=1;k<l;k++)
+                System.out.print(" \t");
+                for(j=1;j<=b;j++,k++){
+                    System.out.print(j+"\t");
+                    l++;
+                    if(l==8||k%7==0){
+                        System.out.println();
+                        l=1;
+                    }
+                }
                 System.out.println();
-                l=1;
+            }
+        }
+        else{        
+            System.out.println(m[month-1]);
+            System.out.println("S\tM\tT\tW\tT\tF\tS");
+            for(i=1;i<month;i++){
+                b=ob.leap(y,i);
+                l+=b;
+            }
+            b=ob.leap(y, i);
+            l=l%7+1;
+            for(j=1;j<l;j++)
+            System.out.print(" \t");
+            for(k=1;k<=b;k++,j++){
+                System.out.print(k+"\t");
+                l++;
+                if(l==8||j%7==0){
+                    System.out.println();
+                    l=1;
+                }
             }
         }
     }
